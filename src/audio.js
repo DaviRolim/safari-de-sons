@@ -3,6 +3,7 @@ export function createAudioSystem({ backend, clock, cooldownMs = 1800, sequenceG
   let currentSrc = null;
   let currentEl = null;
   let lastPlayedAt = new Map();
+  let generation = 0;
 
   function getElement(src) {
     if (!cache.has(src)) {
@@ -22,6 +23,9 @@ export function createAudioSystem({ backend, clock, cooldownMs = 1800, sequenceG
       currentEl.pause();
     }
 
+    // Any new top-level play call cancels in-flight playSequence.
+    generation += 1;
+
     const el = getElement(src);
     el.currentTime = 0;
     currentSrc = src;
@@ -36,8 +40,28 @@ export function createAudioSystem({ backend, clock, cooldownMs = 1800, sequenceG
   }
 
   async function playSequence(srcs) {
+    const myGen = ++generation;
     for (const src of srcs) {
-      await play(src);
+      if (myGen !== generation) return;
+      // Inline-play to keep the gesture chain on the FIRST clip (iOS).
+      const now = clock.now();
+      if (currentSrc === src) {
+        const last = lastPlayedAt.get(src) ?? -Infinity;
+        if (now - last < cooldownMs) {
+          return;
+        }
+      } else if (currentEl && currentEl.playing) {
+        currentEl.pause();
+      }
+      const el = getElement(src);
+      el.currentTime = 0;
+      currentSrc = src;
+      currentEl = el;
+      lastPlayedAt.set(src, now);
+      try {
+        await el.play();
+      } catch (err) {}
+      if (myGen !== generation) return;
       await new Promise((resolve) => setTimeout(resolve, sequenceGapMs));
     }
   }
