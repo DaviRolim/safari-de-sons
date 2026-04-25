@@ -4,6 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Safari de Sons</title>
+
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#2d5a3d" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Safari" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+
+    <!-- Single iOS splash for iPhone 14 / 15 (1170x2532). Other phones get the
+         theme-color background as a fallback — see spec §6.2. -->
+    <link rel="apple-touch-startup-image" href="splash-1170x2532.png"
+          media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
