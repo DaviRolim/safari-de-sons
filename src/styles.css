@@ -9,16 +9,58 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
   overflow: hidden;
   background: var(--bg-jungle-deep);
   color: #fff;
   font-family: system-ui, -apple-system, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
-#app {
+#diorama {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/assets/images/jungle-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg-jungle-deep);
+  overflow: hidden;
+}
+
+.animal {
+  position: absolute;
+  cursor: pointer;
+  transform-origin: center bottom;
+  filter: drop-shadow(2px 6px 8px rgba(0, 0, 0, 0.4));
+  will-change: transform;
+}
+
+.animal img {
+  display: block;
+  height: 50vh;
+  width: auto;
+  pointer-events: none;
+}
+
+#rotate-hint {
+  position: fixed;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  flex-direction: column;
+  background: var(--bg-jungle-deep);
+  z-index: 9999;
+  font-size: 24px;
+  text-align: center;
+}
+
+#rotate-hint[hidden] { display: none; }
+
+@media (orientation: portrait) {
+  #rotate-hint { display: flex; }
+  #diorama { display: none; }
 }

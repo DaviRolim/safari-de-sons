@@ -1,1 +1,4 @@
-console.log("Safari de Sons booted");
+import { renderDiorama } from "./diorama.js";
+
+const container = document.getElementById("diorama");
+renderDiorama(container);
