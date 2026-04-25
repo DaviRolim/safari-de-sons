@@ -11,7 +11,7 @@
     "voiceover:generate": "node scripts/generate-voiceover.mjs",
     "sheet:crop": "node scripts/crop-character-sheet.mjs",
     "sheet:refine": "node scripts/refine-with-rembg.mjs",
-    "test": "node --test 'tests/unit/**/*.test.js'",
+    "test": "node --test $(find tests/unit -name '*.test.js' | sort)",
     "test:e2e": "playwright test"
   },
   "devDependencies": {
