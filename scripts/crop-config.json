@@ -1,0 +1,21 @@
+{
+  "source": "../natan-escova-floresta/assets/generated/character-sheet.png",
+  "outDir": "assets/images",
+  "chromaKey": {
+    "r": 90,
+    "g": 140,
+    "b": 80,
+    "tolerance": 70
+  },
+  "background": {
+    "out": "jungle-bg.png",
+    "blur": 8
+  },
+  "crops": [
+    { "id": "lion",    "out": "lion.png",    "x": 0.05, "y": 0.10, "w": 0.20, "h": 0.75 },
+    { "id": "zebra",   "out": "zebra.png",   "x": 0.22, "y": 0.05, "w": 0.18, "h": 0.80 },
+    { "id": "hippo",   "out": "hippo.png",   "x": 0.40, "y": 0.20, "w": 0.22, "h": 0.65 },
+    { "id": "giraffe", "out": "giraffe.png", "x": 0.65, "y": 0.05, "w": 0.18, "h": 0.85 },
+    { "id": "lemur",   "out": "lemur.png",   "x": 0.83, "y": 0.40, "w": 0.15, "h": 0.55 }
+  ]
+}
