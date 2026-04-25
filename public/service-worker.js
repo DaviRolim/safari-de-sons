@@ -1,4 +1,8 @@
-const CACHE_VERSION = "v1";
+// IMPORTANT: bump CACHE_VERSION on every deploy that changes any precached or
+// dynamically-fetched asset. The hashed Vite bundles (`assets/main-XXXX.js`,
+// `assets/main-XXXX.css`) are cached on first fetch by the handler below; the
+// precache list only covers stable filenames.
+const CACHE_VERSION = "v2";
 const CACHE_NAME = `safari-de-sons-${CACHE_VERSION}`;
 
 const PRECACHE = [
@@ -8,7 +12,6 @@ const PRECACHE = [
   "./icon-192.png",
   "./icon-512.png",
   "./splash-1170x2532.png",
-  "./assets/images/jungle-bg.png",
   "./assets/images/lion.png",
   "./assets/images/zebra.png",
   "./assets/images/hippo.png",
@@ -48,7 +51,19 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  // Only cache same-origin GETs (avoid third-party CDN noise).
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin) return;
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+    caches.match(event.request).then((cached) => {
+      if (cached) return cached;
+      return fetch(event.request).then((response) => {
+        // Only cache valid (200) opaque-or-basic responses.
+        if (!response || response.status !== 200) return response;
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        return response;
+      });
+    })
   );
 });
