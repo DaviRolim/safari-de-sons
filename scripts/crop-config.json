@@ -13,9 +13,9 @@
   },
   "crops": [
     { "id": "lion",    "out": "lion.png",    "x": 0.02, "y": 0.08, "w": 0.20, "h": 0.78 },
-    { "id": "zebra",   "out": "zebra.png",   "x": 0.20, "y": 0.05, "w": 0.18, "h": 0.83 },
-    { "id": "hippo",   "out": "hippo.png",   "x": 0.50, "y": 0.18, "w": 0.20, "h": 0.68 },
-    { "id": "giraffe", "out": "giraffe.png", "x": 0.66, "y": 0.02, "w": 0.31, "h": 0.85 },
+    { "id": "zebra",   "out": "zebra.png",   "x": 0.24, "y": 0.05, "w": 0.16, "h": 0.83 },
+    { "id": "hippo",   "out": "hippo.png",   "x": 0.54, "y": 0.18, "w": 0.18, "h": 0.68 },
+    { "id": "giraffe", "out": "giraffe.png", "x": 0.72, "y": 0.02, "w": 0.26, "h": 0.85 },
     { "id": "lemur",   "out": "lemur.png",   "x": 0.85, "y": 0.62, "w": 0.13, "h": 0.32 }
   ]
 }
