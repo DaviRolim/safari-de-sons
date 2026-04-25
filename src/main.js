@@ -14,10 +14,10 @@ audio.preload(allClips);
 
 renderDiorama(container, {
   onTap: (animal) => {
-    // Spec §3.3: voice clip starts at T+150ms (tap animation gets a head start).
-    setTimeout(() => {
-      audio.playSequence([animal.voicePath, animal.soundPath]);
-    }, 150);
+    // iOS Safari requires audio.play() called synchronously from the user
+    // gesture event. The CSS animation already paints first naturally
+    // (paint is faster than audio decode), so no setTimeout needed.
+    audio.playSequence([animal.voicePath, animal.soundPath]);
   }
 });
 
