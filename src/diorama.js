@@ -56,7 +56,7 @@ function triggerTap(el, animal, container) {
   sparkle.style.left = `${rect.left - containerRect.left + rect.width / 2}px`;
   sparkle.style.top = `${rect.top - containerRect.top + rect.height / 2}px`;
   container.appendChild(sparkle);
-  setTimeout(() => sparkle.remove(), 1300);
+  setTimeout(() => sparkle.remove(), 1800);
 }
 
 function createIdleScheduler(animalEls) {
