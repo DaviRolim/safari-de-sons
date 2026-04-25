@@ -10,7 +10,7 @@
     "voiceover:samples": "node scripts/voiceover-samples.mjs",
     "voiceover:generate": "node scripts/generate-voiceover.mjs",
     "sheet:crop": "node scripts/crop-character-sheet.mjs",
-    "test": "node --test tests/unit",
+    "test": "node --test 'tests/unit/**/*.test.js'",
     "test:e2e": "playwright test"
   },
   "devDependencies": {
