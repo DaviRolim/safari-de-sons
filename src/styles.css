@@ -64,3 +64,31 @@ html, body {
   #rotate-hint { display: flex; }
   #diorama { display: none; }
 }
+
+.animal.tapped {
+  animation: wiggle 600ms ease-out;
+}
+
+@keyframes wiggle {
+  0%   { transform: translateX(-50%) scale(var(--scale, 1)); }
+  20%  { transform: translateX(-50%) scale(calc(var(--scale, 1) * 1.12)) rotate(-4deg); }
+  50%  { transform: translateX(-50%) scale(calc(var(--scale, 1) * 1.08)) rotate(4deg); }
+  80%  { transform: translateX(-50%) scale(calc(var(--scale, 1) * 1.04)) rotate(-2deg); }
+  100% { transform: translateX(-50%) scale(var(--scale, 1)); }
+}
+
+.sparkle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,180,0.9) 0%, rgba(255,255,180,0) 70%);
+  animation: sparkle-fade 1200ms ease-out forwards;
+  z-index: 100;
+}
+
+@keyframes sparkle-fade {
+  0%   { transform: translate(-50%, -50%) scale(0.4); opacity: 1; }
+  60%  { transform: translate(-50%, -50%) scale(1.4); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+}
