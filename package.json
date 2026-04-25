@@ -1,0 +1,22 @@
+{
+  "name": "safari-de-sons",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "voiceover:samples": "node scripts/voiceover-samples.mjs",
+    "voiceover:generate": "node scripts/generate-voiceover.mjs",
+    "sheet:crop": "node scripts/crop-character-sheet.mjs",
+    "test": "node --test tests/unit",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "dotenv": "^16.4.5",
+    "sharp": "^0.33.5",
+    "vite": "^5.4.10"
+  }
+}

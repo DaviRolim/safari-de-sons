@@ -1,0 +1,24 @@
+:root {
+  --bg-jungle-deep: #2d5a3d;
+  --bg-jungle-mid: #5a8c52;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-jungle-deep);
+  color: #fff;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+}
