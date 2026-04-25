@@ -20,3 +20,11 @@ renderDiorama(container, {
     }, 150);
   }
 });
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch(() => {
+      // SW registration failures are silent in dev.
+    });
+  });
+}
