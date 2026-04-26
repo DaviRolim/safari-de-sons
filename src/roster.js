@@ -1,6 +1,9 @@
-export const ANIMALS = [
+export const SCENES = ["jungle", "backyard"];
+
+export const ROSTER = [
   {
     id: "lion",
+    scene: "jungle",
     englishWord: "Lion",
     voicePath: "assets/voice/lion.mp3",
     soundPath: "assets/sounds/lion-roar.mp3",
@@ -10,6 +13,7 @@ export const ANIMALS = [
   },
   {
     id: "zebra",
+    scene: "jungle",
     englishWord: "Zebra",
     voicePath: "assets/voice/zebra.mp3",
     soundPath: "assets/sounds/zebra-neigh.mp3",
@@ -19,6 +23,7 @@ export const ANIMALS = [
   },
   {
     id: "hippo",
+    scene: "jungle",
     englishWord: "Hippo",
     voicePath: "assets/voice/hippo.mp3",
     soundPath: "assets/sounds/hippo-grunt.mp3",
@@ -28,6 +33,7 @@ export const ANIMALS = [
   },
   {
     id: "giraffe",
+    scene: "jungle",
     englishWord: "Giraffe",
     voicePath: "assets/voice/giraffe.mp3",
     soundPath: "assets/sounds/giraffe-bleat.mp3",
@@ -37,6 +43,7 @@ export const ANIMALS = [
   },
   {
     id: "lemur",
+    scene: "jungle",
     englishWord: "Lemur",
     voicePath: "assets/voice/lemur.mp3",
     soundPath: "assets/sounds/lemur-chatter.mp3",

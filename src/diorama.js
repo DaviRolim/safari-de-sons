@@ -1,4 +1,4 @@
-import { ANIMALS } from "./animals.js";
+import { ROSTER } from "./roster.js";
 
 const IDLE_HINT_DELAY_MS = 2000;
 const HINT_PAUSE_AFTER_TAP_MS = 4000;
@@ -9,7 +9,7 @@ export function renderDiorama(container, { onTap } = {}) {
   container.innerHTML = "";
   const animalEls = new Map();
 
-  for (const animal of ANIMALS) {
+  for (const animal of ROSTER) {
     const el = document.createElement("button");
     el.className = "animal";
     el.dataset.id = animal.id;

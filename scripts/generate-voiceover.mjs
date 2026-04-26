@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { ANIMALS } from "../src/animals.js";
+import { ROSTER } from "../src/roster.js";
 import { VOICE_ID, MODEL_ID, VOICE_SETTINGS } from "./voice-config.mjs";
 
 const apiKey = process.env.ELEVENLABS_API_KEY;
@@ -14,7 +14,7 @@ const force = process.argv.includes("--force");
 const outDir = path.resolve("assets/voice");
 await fs.mkdir(outDir, { recursive: true });
 
-for (const animal of ANIMALS) {
+for (const animal of ROSTER) {
   const outFile = path.resolve(animal.voicePath);
   await fs.mkdir(path.dirname(outFile), { recursive: true });
 

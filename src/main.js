@@ -1,5 +1,5 @@
 import { renderDiorama } from "./diorama.js";
-import { ANIMALS } from "./animals.js";
+import { ROSTER } from "./roster.js";
 import { createAudioSystem, createBrowserBackend, createBrowserClock } from "./audio.js";
 
 const container = document.getElementById("diorama");
@@ -9,7 +9,7 @@ const audio = createAudioSystem({
   cooldownMs: 1800
 });
 
-const allClips = ANIMALS.flatMap((a) => [a.voicePath, a.soundPath]);
+const allClips = ROSTER.flatMap((a) => [a.voicePath, a.soundPath]);
 audio.preload(allClips);
 
 renderDiorama(container, {
