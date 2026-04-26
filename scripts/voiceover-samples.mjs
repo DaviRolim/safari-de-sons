@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { MODEL_ID, VOICE_SETTINGS } from "./voice-config.mjs";
 
 const apiKey = process.env.ELEVENLABS_API_KEY;
 if (!apiKey) {
@@ -57,8 +58,8 @@ for (const v of config.samples) {
     },
     body: JSON.stringify({
       text: config.text,
-      model_id: "eleven_multilingual_v2",
-      voice_settings: { stability: 0.4, similarity_boost: 0.75, style: 0.5 }
+      model_id: MODEL_ID,
+      voice_settings: VOICE_SETTINGS
     })
   });
   if (!res.ok) {
