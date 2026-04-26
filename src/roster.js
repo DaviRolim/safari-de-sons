@@ -50,5 +50,79 @@ export const ROSTER = [
     position: { left: 86, bottom: 12 },
     scale: 0.85,
     zIndex: 3
+  },
+  {
+    id: "natan-jungle",
+    scene: "jungle",
+    englishWord: "Natan",
+    voice: "br-pt",
+    voicePath: "assets/voice/natan.mp3",
+    soundPath: "assets/sounds/natan-giggle.mp3",
+    spritePath: "assets/images/natan-jungle.png",
+    position: { left: 50, bottom: 12 },
+    scale: 1.0,
+    zIndex: 5
+  },
+  {
+    id: "cow",
+    scene: "backyard",
+    englishWord: "Cow",
+    voicePath: "assets/voice/cow.mp3",
+    soundPath: "assets/sounds/cow-moo.mp3",
+    position: { left: 14, bottom: 20 },
+    scale: 1.0,
+    zIndex: 2
+  },
+  {
+    id: "dog",
+    scene: "backyard",
+    englishWord: "Dog",
+    voicePath: "assets/voice/dog.mp3",
+    soundPath: "assets/sounds/dog-bark.mp3",
+    position: { left: 32, bottom: 12 },
+    scale: 0.9,
+    zIndex: 4
+  },
+  {
+    id: "natan-backyard",
+    scene: "backyard",
+    englishWord: "Natan",
+    voice: "br-pt",
+    voicePath: "assets/voice/natan.mp3",
+    soundPath: "assets/sounds/natan-giggle.mp3",
+    spritePath: "assets/images/natan-backyard.png",
+    position: { left: 48, bottom: 12 },
+    scale: 1.0,
+    zIndex: 5
+  },
+  {
+    id: "cat",
+    scene: "backyard",
+    englishWord: "Cat",
+    voicePath: "assets/voice/cat.mp3",
+    soundPath: "assets/sounds/cat-meow.mp3",
+    position: { left: 62, bottom: 10 },
+    scale: 0.85,
+    zIndex: 3
+  },
+  {
+    id: "bird",
+    scene: "backyard",
+    englishWord: "Bird",
+    voicePath: "assets/voice/bird.mp3",
+    soundPath: "assets/sounds/bird-tweet.mp3",
+    position: { left: 80, bottom: 50 },
+    scale: 0.7,
+    zIndex: 2
+  },
+  {
+    id: "turtle",
+    scene: "backyard",
+    englishWord: "Turtle",
+    voicePath: "assets/voice/turtle.mp3",
+    soundPath: "assets/sounds/turtle-splash.mp3",
+    position: { left: 88, bottom: 8 },
+    scale: 0.8,
+    zIndex: 4
   }
 ];

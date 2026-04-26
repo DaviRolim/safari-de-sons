@@ -6,9 +6,13 @@ test("SCENES exports the two scene IDs in display order", () => {
   assert.deepEqual(SCENES, ["jungle", "backyard"]);
 });
 
-test("ROSTER exports an array of 5 entries (jungle scene only, after Task 1)", () => {
+test("ROSTER exports 12 entries — 6 per scene", () => {
   assert.ok(Array.isArray(ROSTER));
-  assert.equal(ROSTER.length, 5);
+  assert.equal(ROSTER.length, 12);
+  const jungle = ROSTER.filter((e) => e.scene === "jungle");
+  const backyard = ROSTER.filter((e) => e.scene === "backyard");
+  assert.equal(jungle.length, 6);
+  assert.equal(backyard.length, 6);
 });
 
 test("each entry has the required v1 shape", () => {
@@ -38,9 +42,31 @@ test("entry IDs are unique", () => {
   assert.equal(new Set(ids).size, ids.length);
 });
 
-test("v1 jungle animals are present", () => {
+test("v1 jungle animals (plus jungle Natan) are present", () => {
   const ids = ROSTER.filter((e) => e.scene === "jungle").map((e) => e.id).sort();
-  assert.deepEqual(ids, ["giraffe", "hippo", "lemur", "lion", "zebra"]);
+  assert.deepEqual(ids, ["giraffe", "hippo", "lemur", "lion", "natan-jungle", "zebra"]);
+});
+
+test("backyard animals (plus backyard Natan) are present", () => {
+  const ids = ROSTER.filter((e) => e.scene === "backyard").map((e) => e.id).sort();
+  assert.deepEqual(ids, ["bird", "cat", "cow", "dog", "natan-backyard", "turtle"]);
+});
+
+test("Natan entries declare the br-pt voice override", () => {
+  const natanEntries = ROSTER.filter((e) => e.id.startsWith("natan-"));
+  assert.equal(natanEntries.length, 2);
+  for (const entry of natanEntries) {
+    assert.equal(entry.voice, "br-pt");
+    assert.equal(entry.englishWord, "Natan");
+    assert.ok(entry.spritePath?.endsWith(".png"), `${entry.id} should declare a spritePath`);
+  }
+});
+
+test("non-Natan entries either omit voice or set voice='british'", () => {
+  for (const entry of ROSTER) {
+    if (entry.id.startsWith("natan-")) continue;
+    if ("voice" in entry) assert.equal(entry.voice, "british");
+  }
 });
 
 test("positions are within 0-100% range", () => {
