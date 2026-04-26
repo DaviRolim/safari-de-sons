@@ -67,6 +67,7 @@ export function createScenes(track, { sceneIds }) {
     (entries) => {
       for (const e of entries) {
         const sceneId = e.target.dataset.scene;
+        if (!sceneId) continue;
         sm.observe(sceneId, e.intersectionRatio);
       }
     },
