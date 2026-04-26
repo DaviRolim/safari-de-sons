@@ -11,8 +11,6 @@ if (!apiKey) {
 }
 
 const force = process.argv.includes("--force");
-const outDir = path.resolve("assets/voice");
-await fs.mkdir(outDir, { recursive: true });
 
 // Dedupe by voicePath: the two Natan entries share assets/voice/natan.mp3.
 const seen = new Set();
