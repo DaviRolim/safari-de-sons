@@ -1,6 +1,7 @@
 export const SCENES = ["jungle", "backyard"];
 
 export const ROSTER = [
+  // Scene 1 — Jungle
   {
     id: "lion",
     scene: "jungle",
@@ -63,6 +64,7 @@ export const ROSTER = [
     scale: 1.0,
     zIndex: 5
   },
+  // Scene 2 — Backyard
   {
     id: "cow",
     scene: "backyard",
