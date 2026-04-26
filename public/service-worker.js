@@ -2,7 +2,7 @@
 // dynamically-fetched asset. The hashed Vite bundles (`assets/main-XXXX.js`,
 // `assets/main-XXXX.css`) are cached on first fetch by the handler below; the
 // precache list only covers stable filenames.
-const CACHE_VERSION = "v2";
+const CACHE_VERSION = "v3";
 const CACHE_NAME = `safari-de-sons-${CACHE_VERSION}`;
 
 const PRECACHE = [
