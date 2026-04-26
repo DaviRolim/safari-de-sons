@@ -28,7 +28,7 @@ export const ROSTER = [
     englishWord: "Hippo",
     voicePath: "assets/voice/hippo.mp3",
     soundPath: "assets/sounds/hippo-grunt.mp3",
-    position: { left: 50, bottom: 8 },
+    position: { left: 68, bottom: 8 },
     scale: 1.1,
     zIndex: 4
   },
