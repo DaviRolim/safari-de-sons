@@ -2,6 +2,12 @@
 
 This is the documented forward plan. Each item is build-ready (spec'd in the v1 design doc, ordered by engine reuse) but **not yet committed to**. Build only after observing how Natan engages with the previous step.
 
+## v1.5 (shipped 2026-04-26)
+
+Two-scene world: jungle (5 v1 animals + Natan) + backyard (cow, dog, cat, turtle, bird + Natan). Adds horizontally-paged scene navigator with edge-peek + page dots, BR-PT voice override for Natan's name. Engine extended without breaking v1 patterns; v2's planned multi-pose expansion still applies on top.
+
+Spec: [`2026-04-26-safari-de-sons-v1.5-design.md`](superpowers/specs/2026-04-26-safari-de-sons-v1.5-design.md)
+
 ## Future games (in build order)
 
 The 8 other games brainstormed alongside Safari de Sons, sequenced by engine reuse:
