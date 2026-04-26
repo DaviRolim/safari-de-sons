@@ -20,6 +20,3 @@ export function voiceIdFor(label = "british") {
   }
   return id;
 }
-
-// Back-compat: keep the single-id export so scripts that imported VOICE_ID still work.
-export const VOICE_ID = BRITISH_VOICE_ID;

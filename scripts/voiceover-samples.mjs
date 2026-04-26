@@ -8,9 +8,12 @@ if (!apiKey) {
   process.exit(1);
 }
 
-// Five British-female ElevenLabs preset voice IDs (names approximate; verify in ElevenLabs UI).
-// See https://api.elevenlabs.io/v1/voices for the live list.
-const SAMPLES = [
+// Parse --voice flag (default: british).
+const voiceArgIdx = process.argv.indexOf("--voice");
+const voiceLabel = voiceArgIdx >= 0 ? process.argv[voiceArgIdx + 1] : "british";
+
+// Five British-female ElevenLabs preset voice IDs — used in v1 to pick the warm narrator.
+const BRITISH_SAMPLES = [
   { id: "XB0fDUnXU5powFXDhCwa", name: "Charlotte" },
   { id: "Xb7hH8MSUJpSbSDYk0k2", name: "Alice" },
   { id: "FGY2WhTYpPnrIDTdsKH5", name: "Laura" },
@@ -18,11 +21,33 @@ const SAMPLES = [
   { id: "pFZP5JQG7iQjIQuC4Bku", name: "Lily" }
 ];
 
-const text = "Lion!";
-const outDir = path.resolve("voice-samples");
+// Five Brazilian Portuguese voice IDs — used to pick a warm voice for "Natan!".
+// Names approximate; verify in ElevenLabs UI if any error out.
+const BR_PT_SAMPLES = [
+  { id: "TX3LPaxmHKxFdv7VOQHJ", name: "Liam-PT" },
+  { id: "9BWtsMINqrJLrRacOk9x", name: "Aria-PT" },
+  { id: "CwhRBWXzGAHq8TQ4Fs17", name: "Roger-PT" },
+  { id: "SAz9YHcvj6GT2YYXdXww", name: "River-PT" },
+  { id: "JBFqnCBsd6RMkjVDRZzb", name: "Sofia-PT" }
+];
+
+const SAMPLE_SETS = {
+  british: { samples: BRITISH_SAMPLES, text: "Lion!", subdir: "british" },
+  "br-pt": { samples: BR_PT_SAMPLES, text: "Natan!", subdir: "br-pt" }
+};
+
+const config = SAMPLE_SETS[voiceLabel];
+if (!config) {
+  console.error(`Unknown --voice value: "${voiceLabel}". Valid: british | br-pt`);
+  process.exit(1);
+}
+
+const outDir = path.resolve("voice-samples", config.subdir);
 await fs.mkdir(outDir, { recursive: true });
 
-for (const v of SAMPLES) {
+console.log(`Auditioning ${voiceLabel} voices saying "${config.text}" → ${outDir}\n`);
+
+for (const v of config.samples) {
   const url = `https://api.elevenlabs.io/v1/text-to-speech/${v.id}?output_format=mp3_44100_128`;
   const res = await fetch(url, {
     method: "POST",
@@ -31,7 +56,7 @@ for (const v of SAMPLES) {
       "content-type": "application/json"
     },
     body: JSON.stringify({
-      text,
+      text: config.text,
       model_id: "eleven_multilingual_v2",
       voice_settings: { stability: 0.4, similarity_boost: 0.75, style: 0.5 }
     })
@@ -47,9 +72,9 @@ for (const v of SAMPLES) {
   console.log(`  → ${path.relative(process.cwd(), file)}`);
 }
 
-console.log("\nListen to all 5 in voice-samples/, pick your favorite, then create scripts/voice-config.mjs:");
+const targetConst = voiceLabel === "british" ? "BRITISH_VOICE_ID" : "BR_PT_VOICE_ID";
 console.log(`
-export const VOICE_ID = "<paste-the-voice-id-here>";
-export const MODEL_ID = "eleven_multilingual_v2";
-export const VOICE_SETTINGS = { stability: 0.4, similarity_boost: 0.75, style: 0.5 };
+Listen to all 5 in ${outDir}, pick your favorite, then update scripts/voice-config.mjs:
+
+export const ${targetConst} = "<paste-the-voice-id-here>";
 `);
