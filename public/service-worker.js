@@ -48,11 +48,9 @@ const PRECACHE = [
   "./assets/sounds/giraffe-bleat.mp3",
   "./assets/sounds/lemur-chatter.mp3",
   "./assets/sounds/cow-moo.mp3",
-  "./assets/sounds/dog-bark.mp3",
-  "./assets/sounds/cat-meow.mp3",
-  "./assets/sounds/turtle-splash.mp3",
-  "./assets/sounds/bird-tweet.mp3",
-  "./assets/sounds/natan-giggle.mp3"
+  "./assets/sounds/dog-bark.mp3"
+  // cat-meow, turtle-splash, bird-tweet, and natan-giggle are not yet curated;
+  // taps on those animals fall through to silent per the v1 audio contract.
 ];
 
 self.addEventListener("install", (event) => {
