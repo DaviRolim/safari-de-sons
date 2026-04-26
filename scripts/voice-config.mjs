@@ -3,7 +3,7 @@ export const BRITISH_VOICE_ID = "Xb7hH8MSUJpSbSDYk0k2";
 
 // Brazilian Portuguese voice — picked during v1.5 audition.
 // Run `npm run voiceover:samples:brpt` to audition, then paste the chosen ID here.
-export const BR_PT_VOICE_ID = "REPLACE_ME_AFTER_AUDITION";
+export const BR_PT_VOICE_ID = "TX3LPaxmHKxFdv7VOQHJ";
 
 export const MODEL_ID = "eleven_multilingual_v2";
 export const VOICE_SETTINGS = { stability: 0.4, similarity_boost: 0.75, style: 0.5 };
