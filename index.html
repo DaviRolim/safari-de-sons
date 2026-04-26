@@ -24,8 +24,12 @@
     <div id="rotate-hint">
       <p>Rotate the device to landscape 🦁</p>
     </div>
-    <main id="diorama" aria-label="Animal scene">
-      <!-- Diorama renders animal sprites here. -->
+    <main id="diorama" aria-label="Animal scenes">
+      <div class="scenes-track" role="region" aria-roledescription="carousel">
+        <section class="scene-panel" data-scene="jungle" aria-label="Jungle scene"></section>
+        <section class="scene-panel" data-scene="backyard" aria-label="Backyard scene"></section>
+      </div>
+      <nav class="page-dots" aria-label="Scene navigation"></nav>
     </main>
     <script type="module" src="/src/main.js"></script>
   </body>
